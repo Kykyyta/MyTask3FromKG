@@ -1,34 +1,19 @@
 package math;
 
 import math.controller.MathController;
-import math.tests.MathTests;
-import math.view.MathConsoleView;
+import math.view.MathInteractiveView;
 
 public class MathLibraryApp {
-
     public static void main(String[] args) {
+        MathController controller = new MathController();
 
         if (args.length > 0 && "test".equals(args[0])) {
-            runTests();
+            // Режим тестирования
+            controller.runTests();
         } else {
-            runDemo();
+            // Интерактивный режим
+            MathInteractiveView view = new MathInteractiveView(controller);
+            view.start();
         }
-    }
-
-    private static void runTests() {
-        MathTests testRunner = new MathTests();
-        testRunner.runAllTests();
-    }
-
-    private static void runDemo() {
-
-        MathConsoleView view = new MathConsoleView();
-        MathController controller = new MathController(view);
-
-        controller.demonstrateVectorOperations();
-        controller.demonstrateMatrixOperations();
-        controller.demonstrateLinearAlgebraOperations();
-        controller.demonstrateErrorHandling();
-
     }
 }
