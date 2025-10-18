@@ -1,293 +1,193 @@
 package math.controller;
 
 import math.model.*;
-import math.view.MathView;
+import math.tests.MathTests;
 
 public class MathController {
 
-    private final MathView view; // зависимость через инт
-
-    public MathController(MathView view) {
-        this.view = view;
+    // Векторные операции
+    public Vector2f addVectors(Vector2f a, Vector2f b) {
+        return a.add(b);
     }
 
-    public void demonstrateVectorOperations() {
-
-        view.showSectionHeader("VECTOR OPERATIONS DEMONSTRATION");
-
-        Vector2f v2a = new Vector2f(1, 2);
-        Vector2f v2b = new Vector2f(3, 4);
-        demonstrateVector2fOperations(v2a, v2b);
-
-        Vector3f v3a = new Vector3f(1, 0, 0);
-        Vector3f v3b = new Vector3f(0, 1, 0);
-        demonstrateVector3fOperations(v3a, v3b);
-
-        Vector4f v4a = new Vector4f(1, 2, 3, 1);
-        Vector4f v4b = new Vector4f(4, 5, 6, 1);
-        demonstrateVector4fOperations(v4a, v4b);
+    public Vector2f subtractVectors(Vector2f a, Vector2f b) {
+        return a.subtract(b);
     }
 
-    private void demonstrateVector2fOperations(Vector2f v1, Vector2f v2) {
-
-        view.showMessage("\n--- Vector2f Operations ---");
-
-        view.showVector2f("v1", v1);
-        view.showVector2f("v2", v2);
-
-        view.showVector2f("v1 + v2", v1.add(v2));
-        view.showVector2f("v1 - v2", v1.subtract(v2));
-        view.showVector2f("v1 * 2", v1.multiply(2));
-        view.showVector2f("v1 / 2", v1.divide(2));
-
-        view.showMessage("v1 · v2 = " + v1.dot(v2));
-        view.showMessage("||v1|| = " + v1.length());
-        view.showVector2f("normalized(v1)", v1.normalize());
-        view.showMessage("distance(v1, v2) = " + v1.distance(v2));
+    public Vector3f addVectors(Vector3f a, Vector3f b) {
+        return a.add(b);
     }
 
-    private void demonstrateVector3fOperations(Vector3f v1, Vector3f v2) {
-
-        view.showMessage("\n--- Vector3f Operations ---");
-
-        view.showVector3f("v1", v1);
-        view.showVector3f("v2", v2);
-
-        view.showVector3f("v1 + v2", v1.add(v2));
-        view.showVector3f("v1 - v2", v1.subtract(v2));
-        view.showVector3f("v1 * 2", v1.multiply(2));
-        view.showVector3f("v1 / 2", v1.divide(2));
-
-        view.showMessage("v1 · v2 = " + v1.dot(v2));
-        view.showVector3f("v1 × v2", v1.cross(v2));
-        view.showMessage("||v1|| = " + v1.length());
-        view.showVector3f("normalized(v1)", v1.normalize());
-        view.showMessage("distance(v1, v2) = " + v1.distance(v2));
+    public Vector3f subtractVectors(Vector3f a, Vector3f b) {
+        return a.subtract(b);
     }
 
-    private void demonstrateVector4fOperations(Vector4f v1, Vector4f v2) {
-
-        view.showMessage("\n--- Vector4f Operations ---");
-
-        view.showVector4f("v1", v1);
-        view.showVector4f("v2", v2);
-
-        view.showVector4f("v1 + v2", v1.add(v2));
-        view.showVector4f("v1 - v2", v1.subtract(v2));
-        view.showVector4f("v1 * 2", v1.multiply(2));
-        view.showVector4f("v1 / 2", v1.divide(2));
-
-        view.showMessage("v1 · v2 = " + v1.dot(v2));
-        view.showMessage("||v1|| = " + v1.length());
-        view.showVector4f("normalized(v1)", v1.normalize());
-
-        Vector3f v3 = new Vector3f(7, 8, 9);
-        Vector4f v4from3 = new Vector4f(v3);
-        Vector3f v3back = v4from3.toVector3f();
-        view.showVector3f("Original Vector3f", v3);
-        view.showVector4f("Converted to Vector4f", v4from3);
-        view.showVector3f("Converted back to Vector3f", v3back);
+    public Vector4f addVectors(Vector4f a, Vector4f b) {
+        return a.add(b);
     }
 
-    public void demonstrateMatrixOperations() {
-
-        view.showSectionHeader("MATRIX OPERATIONS DEMONSTRATION");
-
-        Matrix3f m3a = new Matrix3f(new float[][]{
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-        });
-
-        Matrix3f m3b = Matrix3f.identity();
-        demonstrateMatrix3fOperations(m3a, m3b);
-
-        Matrix4f m4a = new Matrix4f(new float[][]{
-                {1, 2, 3, 4},
-                {5, 6, 7, 8},
-                {9, 10, 11, 12},
-                {13, 14, 15, 16}
-        });
-
-        Matrix4f m4b = Matrix4f.identity();
-        demonstrateMatrix4fOperations(m4a, m4b);
+    public Vector4f subtractVectors(Vector4f a, Vector4f b) {
+        return a.subtract(b);
     }
 
-    private void demonstrateMatrix3fOperations(Matrix3f m1, Matrix3f m2) {
-
-        view.showMessage("\n--- Matrix3f Operations ---");
-
-        view.showMatrix3f("m1", m1);
-        view.showMatrix3f("m2", m2);
-
-        view.showMatrix3f("m1 + m2", m1.add(m2));
-        view.showMatrix3f("m1 - m2", m1.subtract(m2));
-        view.showMatrix3f("m1 * 2", m1.multiply(2));
-        view.showMatrix3f("m1 * m2", m1.multiply(m2));
-        view.showMatrix3f("transpose(m1)", m1.transpose());
-
-        view.showMessage("det(m1) = " + m1.determinant());
-
-        try {
-            view.showMatrix3f("inverse(m2)", m2.inverse());
-        } catch (ArithmeticException e) {
-            view.showError("Cannot invert matrix: " + e.getMessage());
-        }
+    public Vector3f crossProduct(Vector3f a, Vector3f b) {
+        return a.cross(b);
     }
 
-    private void demonstrateMatrix4fOperations(Matrix4f m1, Matrix4f m2) {
-
-        view.showMessage("\n--- Matrix4f Operations ---");
-        view.showMatrix4f("m1", m1);
-        view.showMatrix4f("m2", m2);
-        view.showMatrix4f("m1 + m2", m1.add(m2));
-        view.showMatrix4f("m1 - m2", m1.subtract(m2));
-        view.showMatrix4f("m1 * 2", m1.multiply(2));
-        view.showMatrix4f("m1 * m2", m1.multiply(m2));
-        view.showMatrix4f("transpose(m1)", m1.transpose());
-
-        view.showMessage("det(m1) = " + m1.determinant());
-
-        try {
-            view.showMatrix4f("inverse(m2)", m2.inverse());
-        } catch (ArithmeticException e) {
-            view.showError("Cannot invert matrix: " + e.getMessage());
-        }
+    public float dotProduct(Vector2f a, Vector2f b) {
+        return a.dot(b);
     }
 
-    public void demonstrateLinearAlgebraOperations() {
-
-        view.showSectionHeader("LINEAR ALGEBRA OPERATIONS DEMONSTRATION");
-
-        demonstrateLinearSystemSolving(); // системка
-        demonstrateMatrixVectorMultiplication(); // матрица на вектор
+    public float dotProduct(Vector3f a, Vector3f b) {
+        return a.dot(b);
     }
 
-    private void demonstrateLinearSystemSolving() {
-
-        view.showMessage("\n--- Linear System Solving ---");
-
-        Matrix3f A3 = new Matrix3f(new float[][]{
-                {2, 1, -1},
-                {-3, -1, 2},
-                {-2, 1, 2}
-        });
-
-        Vector3f b3 = new Vector3f(8, -11, -3);
-
-        view.showMatrix3f("Coefficient matrix A", A3);
-        view.showVector3f("Right-hand side b", b3);
-
-        try {
-            Vector3f x3 = A3.solveLinearSystem(b3);
-            view.showVector3f("Solution x", x3);
-
-            Vector3f Ax = A3.multiply(x3);
-            view.showVector3f("Verification: A*x", Ax);
-            view.showMessage("Solution is correct: " + Ax.equals(b3));
-        } catch (ArithmeticException e) {
-            view.showError("Cannot solve system: " + e.getMessage());
-        }
-
-        Matrix4f A4 = new Matrix4f(new float[][]{
-                {2, 1, 1, 1},
-                {1, 3, 1, 1},
-                {1, 1, 4, 1},
-                {1, 1, 1, 5}
-        });
-
-        Vector4f b4 = new Vector4f(5, 6, 7, 8);
-
-        view.showMatrix4f("Coefficient matrix A", A4);
-        view.showVector4f("Right-hand side b", b4);
-
-        try {
-            Vector4f x4 = A4.solveLinearSystem(b4);
-            view.showVector4f("Solution x", x4);
-
-            Vector4f Ax = A4.multiply(x4);
-            view.showVector4f("Verification: A*x", Ax);
-            view.showMessage("Solution is correct: " + Ax.equals(b4));
-        } catch (ArithmeticException e) {
-            view.showError("Cannot solve system: " + e.getMessage());
-        }
+    public float dotProduct(Vector4f a, Vector4f b) {
+        return a.dot(b);
     }
 
-    private void demonstrateMatrixVectorMultiplication() {
-
-        view.showMessage("\n--- Matrix-Vector Multiplication ---");
-
-        Matrix3f M3 = new Matrix3f(new float[][]{
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-        });
-
-        Vector3f v3 = new Vector3f(1, 2, 3);
-
-        view.showMatrix3f("Matrix M", M3);
-        view.showVector3f("Vector v", v3);
-        view.showVector3f("M * v", M3.multiply(v3));
-
-        Matrix4f M4 = new Matrix4f(new float[][]{
-                {1, 2, 3, 4},
-                {5, 6, 7, 8},
-                {9, 10, 11, 12},
-                {13, 14, 15, 16}
-        });
-        Vector4f v4 = new Vector4f(1, 2, 3, 4);
-
-        view.showMatrix4f("Matrix M", M4);
-        view.showVector4f("Vector v", v4);
-        view.showVector4f("M * v", M4.multiply(v4));
+    public Vector2f multiplyVector(Vector2f v, float scalar) {
+        return v.multiply(scalar);
     }
 
-    public void demonstrateErrorHandling() {
+    public Vector2f divideVector(Vector2f v, float scalar) {
+        return v.divide(scalar);
+    }
 
-        view.showSectionHeader("ERROR HANDLING DEMONSTRATION");
+    public Vector3f multiplyVector(Vector3f v, float scalar) {
+        return v.multiply(scalar);
+    }
 
-        try {
-            Vector2f v = new Vector2f(1, 1);
-            v.divide(0);
-        } catch (ArithmeticException e) {
-            view.showError("Division by zero: " + e.getMessage());
-        }
+    public Vector3f divideVector(Vector3f v, float scalar) {
+        return v.divide(scalar);
+    }
 
-        try {
-            Vector3f zero = new Vector3f(0, 0, 0);
-            zero.normalize();
-        } catch (ArithmeticException e) {
-            view.showError("Normalization of zero vector: " + e.getMessage());
-        }
+    public Vector4f multiplyVector(Vector4f v, float scalar) {
+        return v.multiply(scalar);
+    }
 
-        try {
-            Matrix3f singular = new Matrix3f(new float[][]{
-                    {1, 2, 3},
-                    {4, 5, 6},
-                    {7, 8, 9}
-            });
-            singular.inverse();
-        } catch (ArithmeticException e) {
-            view.showError("Inversion of singular matrix: " + e.getMessage());
-        }
+    public Vector4f divideVector(Vector4f v, float scalar) {
+        return v.divide(scalar);
+    }
 
-        try {
-            Matrix3f inconsistent = new Matrix3f(new float[][]{
-                    {1, 1, 1},
-                    {1, 1, 1},
-                    {1, 1, 1}
-            });
-            Vector3f b = new Vector3f(1, 2, 3);
-            inconsistent.solveLinearSystem(b);
-        } catch (ArithmeticException e) {
-            view.showError("Solving inconsistent system: " + e.getMessage());
-        }
+    public float vectorLength(Vector2f v) {
+        return v.length();
+    }
 
-        try {
-            Vector4f v4 = new Vector4f(1, 2, 3, 0);
-            v4.toVector3f();
-        } catch (ArithmeticException e) {
-            view.showError("Vector4f to Vector3f conversion with w=0: " + e.getMessage());
-        }
+    public float vectorLength(Vector3f v) {
+        return v.length();
+    }
+
+    public float vectorLength(Vector4f v) {
+        return v.length();
+    }
+
+    public Vector2f normalizeVector(Vector2f v) {
+        return v.normalize();
+    }
+
+    public Vector3f normalizeVector(Vector3f v) {
+        return v.normalize();
+    }
+
+    public Vector4f normalizeVector(Vector4f v) {
+        return v.normalize();
+    }
+
+    public float distance(Vector2f a, Vector2f b) {
+        return a.distance(b);
+    }
+
+    public float distance(Vector3f a, Vector3f b) {
+        return a.distance(b);
+    }
+
+    // Матричные операции
+    public Matrix3f addMatrices(Matrix3f a, Matrix3f b) {
+        return a.add(b);
+    }
+
+    public Matrix3f subtractMatrices(Matrix3f a, Matrix3f b) {
+        return a.subtract(b);
+    }
+
+    public Matrix3f multiplyMatrices(Matrix3f a, Matrix3f b) {
+        return a.multiply(b);
+    }
+
+    public Matrix3f multiplyMatrix(Matrix3f m, float scalar) {
+        return m.multiply(scalar);
+    }
+
+    public Matrix3f transposeMatrix(Matrix3f m) {
+        return m.transpose();
+    }
+
+    public Matrix3f inverseMatrix(Matrix3f m) {
+        return m.inverse();
+    }
+
+    public Vector3f multiplyMatrixVector(Matrix3f m, Vector3f v) {
+        return m.multiply(v);
+    }
+
+    public float matrixDeterminant(Matrix3f m) {
+        return m.determinant();
+    }
+
+    public Vector3f solveLinearSystem(Matrix3f A, Vector3f b) {
+        return A.solveLinearSystem(b);
+    }
+
+    // Matrix4f операции
+    public Matrix4f addMatrices(Matrix4f a, Matrix4f b) {
+        return a.add(b);
+    }
+
+    public Matrix4f subtractMatrices(Matrix4f a, Matrix4f b) {
+        return a.subtract(b);
+    }
+
+    public Matrix4f multiplyMatrices(Matrix4f a, Matrix4f b) {
+        return a.multiply(b);
+    }
+
+    public Matrix4f multiplyMatrix(Matrix4f m, float scalar) {
+        return m.multiply(scalar);
+    }
+
+    public Matrix4f transposeMatrix(Matrix4f m) {
+        return m.transpose();
+    }
+
+    public Matrix4f inverseMatrix(Matrix4f m) {
+        return m.inverse();
+    }
+
+    public Vector4f multiplyMatrixVector(Matrix4f m, Vector4f v) {
+        return m.multiply(v);
+    }
+
+    public float matrixDeterminant(Matrix4f m) {
+        return m.determinant();
+    }
+
+    public Vector4f solveLinearSystem(Matrix4f A, Vector4f b) {
+        return A.solveLinearSystem(b);
+    }
+
+    // Конвертация векторов
+    public Vector4f vector3fTo4f(Vector3f v) {
+        return new Vector4f(v);
+    }
+
+    public Vector3f vector4fTo3f(Vector4f v) {
+        return v.toVector3f();
+    }
+
+    // Тестирование
+    public void runTests() {
+        MathTests tests = new MathTests();
+        tests.runAllTests();
     }
 }
