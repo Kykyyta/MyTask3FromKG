@@ -19,7 +19,14 @@ public class BaseConsoleView {
     }
 
     protected void showError(String errorMessage) {
-        System.err.println("ERROR: " + errorMessage);
+        // Убираем дублирование "Error: " если оно уже есть в сообщении
+        String cleanMessage = errorMessage.replaceFirst("^(?i)error:\\s*", "");
+        System.err.println("Error: " + cleanMessage);
+    }
+
+    protected void showError(Exception e) {
+        // Специальный метод для исключений
+        showError(e.getMessage());
     }
 
     protected void showSectionHeader(String sectionName) {
