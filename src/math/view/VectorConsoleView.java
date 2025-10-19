@@ -109,7 +109,7 @@ public class VectorConsoleView extends BaseConsoleView {
             Vector2f result = controller.divideVector(v, scalar);
             showMessage("Result: " + v + " / " + scalar + " = " + result);
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -130,7 +130,7 @@ public class VectorConsoleView extends BaseConsoleView {
             showMessage("Normalized " + v + " = " + normalized);
             showMessage("Length of normalized vector: " + controller.vectorLength(normalized));
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -232,7 +232,7 @@ public class VectorConsoleView extends BaseConsoleView {
             Vector3f result = controller.divideVector(v, scalar);
             showMessage("Result: " + v + " / " + scalar + " = " + result);
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -253,7 +253,7 @@ public class VectorConsoleView extends BaseConsoleView {
             showMessage("Normalized " + v + " = " + normalized);
             showMessage("Length of normalized vector: " + controller.vectorLength(normalized));
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -344,7 +344,7 @@ public class VectorConsoleView extends BaseConsoleView {
             Vector4f result = controller.divideVector(v, scalar);
             showMessage("Result: " + v + " / " + scalar + " = " + result);
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -365,7 +365,7 @@ public class VectorConsoleView extends BaseConsoleView {
             showMessage("Normalized " + v + " = " + normalized);
             showMessage("Length of normalized vector: " + controller.vectorLength(normalized));
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -387,7 +387,7 @@ public class VectorConsoleView extends BaseConsoleView {
                 Vector3f v3 = controller.vector4fTo3f(v4);
                 showMessage("Converted to 3D: " + v3);
             } catch (ArithmeticException e) {
-                showError("Error: " + e.getMessage());
+                showError(e);
             }
         } else {
             showError("Invalid choice!");
