@@ -9,7 +9,7 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
     protected final int size;
 
     protected AbstractMatrix(float[][] data, int size) {
-        // Проверяем все строки на соответствие размеру
+
         if (data.length != size) {
             throw new IllegalArgumentException("Matrix must be " + size + "x" + size);
         }
