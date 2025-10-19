@@ -33,6 +33,7 @@ public class Matrix3f extends AbstractMatrix<Matrix3f, Vector3f> {
         float x = data[0][0] * vector.getX() + data[0][1] * vector.getY() + data[0][2] * vector.getZ();
         float y = data[1][0] * vector.getX() + data[1][1] * vector.getY() + data[1][2] * vector.getZ();
         float z = data[2][0] * vector.getX() + data[2][1] * vector.getY() + data[2][2] * vector.getZ();
+
         return new Vector3f(x, y, z);
 
     }
