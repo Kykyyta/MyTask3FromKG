@@ -5,7 +5,6 @@ import math.tests.MathTests;
 
 public class MathController {
 
-    // Векторные операции
     public Vector2f addVectors(Vector2f a, Vector2f b) {
         return a.add(b);
     }
@@ -102,7 +101,6 @@ public class MathController {
         return a.distance(b);
     }
 
-    // Матричные операции
     public Matrix3f addMatrices(Matrix3f a, Matrix3f b) {
         return a.add(b);
     }
@@ -139,7 +137,6 @@ public class MathController {
         return A.solveLinearSystem(b);
     }
 
-    // Matrix4f операции
     public Matrix4f addMatrices(Matrix4f a, Matrix4f b) {
         return a.add(b);
     }
@@ -176,7 +173,6 @@ public class MathController {
         return A.solveLinearSystem(b);
     }
 
-    // Конвертация векторов
     public Vector4f vector3fTo4f(Vector3f v) {
         return new Vector4f(v);
     }
@@ -185,7 +181,6 @@ public class MathController {
         return v.toVector3f();
     }
 
-    // Тестирование
     public void runTests() {
         MathTests tests = new MathTests();
         tests.runAllTests();
