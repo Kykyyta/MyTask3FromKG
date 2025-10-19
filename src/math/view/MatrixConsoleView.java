@@ -251,3 +251,4 @@ public class MatrixConsoleView extends BaseConsoleView {
         showMessage("Result: " + result);
     }
 }
+
