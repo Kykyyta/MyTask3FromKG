@@ -4,6 +4,7 @@ import math.controller.MathController;
 import java.util.Scanner;
 
 public class MathInteractiveView {
+
     private final MathController controller;
     private final Scanner scanner;
     private final VectorConsoleView vectorView;
@@ -12,20 +13,25 @@ public class MathInteractiveView {
     private final ErrorHandlingView errorHandlingView;
 
     public MathInteractiveView(MathController controller) {
+
         this.controller = controller;
         this.scanner = new Scanner(System.in);
         this.vectorView = new VectorConsoleView(controller, scanner);
         this.matrixView = new MatrixConsoleView(controller, scanner);
         this.linearAlgebraView = new LinearAlgebraConsoleView(controller, scanner);
         this.errorHandlingView = new ErrorHandlingView(controller);
+
     }
 
     public void start() {
+
         System.out.println("=== MATH LINEAR ALGEBRA LIBRARY ===");
         showMainMenu();
+
     }
 
     private void showMainMenu() {
+
         while (true) {
             System.out.println("\n=== MAIN MENU ===");
             System.out.println("1. Vector Operations");
@@ -54,7 +60,10 @@ public class MathInteractiveView {
     }
 
     private void runTests() {
+
         System.out.println("\n=== RUNNING ALL TESTS ===");
+
         controller.runTests();
+
     }
 }
