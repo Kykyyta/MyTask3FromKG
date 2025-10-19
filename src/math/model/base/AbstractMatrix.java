@@ -21,6 +21,7 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
 
         this.size = size;
         this.data = new float[size][size];
+
         for (int i = 0; i < size; i++) {
             System.arraycopy(data[i], 0, this.data[i], 0, size);
         }
