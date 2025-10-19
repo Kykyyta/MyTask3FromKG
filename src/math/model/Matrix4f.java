@@ -51,7 +51,7 @@ public class Matrix4f extends AbstractMatrix<Matrix4f, Vector4f> {
             }
             return det;
         } catch (Exception e) {
-            throw new ArithmeticException("Error calculating determinant: " + e.getMessage());
+            throw new ArithmeticException("Calculating determinant: " + e.getMessage());
         }
     }
 
