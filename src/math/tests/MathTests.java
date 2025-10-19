@@ -39,16 +39,16 @@ public class MathTests {
             Vector2f v1 = new Vector2f(1, 2);
             Vector2f v2 = new Vector2f(3, 4);
 
-            Vector2f result = v1.add(v2); // сложение
+            Vector2f result = v1.add(v2);
 
-            assertVectorEquals(new Vector2f(4, 6), result); // проверка моя
+            assertVectorEquals(new Vector2f(4, 6), result);
         });
 
         test("Vector2f subtraction", () -> {
             Vector2f v1 = new Vector2f(1, 2);
             Vector2f v2 = new Vector2f(3, 4);
 
-            Vector2f result = v1.subtract(v2); // вычитание
+            Vector2f result = v1.subtract(v2);
 
             assertVectorEquals(new Vector2f(-2, -2), result);
         });
