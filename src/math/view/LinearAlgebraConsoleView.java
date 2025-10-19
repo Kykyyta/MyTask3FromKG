@@ -38,12 +38,12 @@ public class LinearAlgebraConsoleView extends BaseConsoleView {
             Vector3f x = controller.solveLinearSystem(A, b);
             showMessage("Solution x = " + x);
 
-            // Проверка
+            // Verification
             Vector3f Ax = controller.multiplyMatrixVector(A, x);
             showMessage("Verification A*x = " + Ax);
             showMessage("Solution is correct: " + Ax.equals(b));
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -56,12 +56,12 @@ public class LinearAlgebraConsoleView extends BaseConsoleView {
             Vector4f x = controller.solveLinearSystem(A, b);
             showMessage("Solution x = " + x);
 
-            // Проверка
+            // Verification
             Vector4f Ax = controller.multiplyMatrixVector(A, x);
             showMessage("Verification A*x = " + Ax);
             showMessage("Solution is correct: " + Ax.equals(b));
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 }
