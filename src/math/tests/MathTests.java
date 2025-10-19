@@ -182,6 +182,20 @@ public class MathTests {
             Vector4f normalized = v.normalize();
             assertFloatEquals(1, normalized.length(), 0.0001f);
         });
+
+        test("Vector4f distance", () -> {
+            Vector4f v1 = new Vector4f(1, 1, 1, 1);
+            Vector4f v2 = new Vector4f(2, 2, 2, 2);
+            assertFloatEquals(2, v1.distance(v2), 0.0001f);
+
+            Vector4f v3 = new Vector4f(0, 0, 0, 0);
+            Vector4f v4 = new Vector4f(1, 0, 0, 0);
+            assertFloatEquals(1, v3.distance(v4), 0.0001f);
+
+            Vector4f v5 = new Vector4f(1, 2, 3, 4);
+            Vector4f v6 = new Vector4f(5, 6, 7, 8);
+            assertFloatEquals(8, v5.distance(v6), 0.0001f);
+        });
     }
 
     private void testMatrix3f() {
@@ -508,6 +522,7 @@ public class MathTests {
     private void printSummary() {
 
         System.out.println("\n=== TEST SUMMARY ===");
+
         System.out.println("Passed: " + passedTests);
         System.out.println("Failed: " + failedTests);
         System.out.println("Total: " + (passedTests + failedTests));
