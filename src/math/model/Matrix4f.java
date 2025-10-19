@@ -37,6 +37,7 @@ public class Matrix4f extends AbstractMatrix<Matrix4f, Vector4f> {
                 data[2][2] * vector.getZ() + data[2][3] * vector.getW();
         float w = data[3][0] * vector.getX() + data[3][1] * vector.getY() +
                 data[3][2] * vector.getZ() + data[3][3] * vector.getW();
+
         return new Vector4f(x, y, z, w);
 
     }
