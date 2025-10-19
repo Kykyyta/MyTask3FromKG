@@ -19,13 +19,13 @@ public class BaseConsoleView {
     }
 
     protected void showError(String errorMessage) {
-        // Убираем дублирование "Error: " если оно уже есть в сообщении
-        String cleanMessage = errorMessage.replaceFirst("^(?i)error:\\s*", "");
+
+        String cleanMessage = errorMessage.replaceFirst("^(?i)error:\\s*", ""); // чтобы не было дублирований на всякий
         System.err.println("Error: " + cleanMessage);
+
     }
 
     protected void showError(Exception e) {
-        // Специальный метод для исключений
         showError(e.getMessage());
     }
 
@@ -34,15 +34,19 @@ public class BaseConsoleView {
     }
 
     protected Vector2f readVector2f(String prompt) {
+
         showMessage(prompt + ":");
         showMessage("Enter x: ");
         float x = readFloat();
         showMessage("Enter y: ");
         float y = readFloat();
+
         return new Vector2f(x, y);
+
     }
 
     protected Vector3f readVector3f(String prompt) {
+
         showMessage(prompt + ":");
         showMessage("Enter x: ");
         float x = readFloat();
@@ -50,10 +54,13 @@ public class BaseConsoleView {
         float y = readFloat();
         showMessage("Enter z: ");
         float z = readFloat();
+
         return new Vector3f(x, y, z);
+
     }
 
     protected Vector4f readVector4f(String prompt) {
+
         showMessage(prompt + ":");
         showMessage("Enter x: ");
         float x = readFloat();
@@ -63,10 +70,13 @@ public class BaseConsoleView {
         float z = readFloat();
         showMessage("Enter w: ");
         float w = readFloat();
+
         return new Vector4f(x, y, z, w);
+
     }
 
     protected Matrix3f readMatrix3f(String prompt) {
+
         showMessage(prompt + ":");
         float[][] data = new float[3][3];
         for (int i = 0; i < 3; i++) {
@@ -79,6 +89,7 @@ public class BaseConsoleView {
     }
 
     protected Matrix4f readMatrix4f(String prompt) {
+
         showMessage(prompt + ":");
         float[][] data = new float[4][4];
         for (int i = 0; i < 4; i++) {
@@ -88,6 +99,7 @@ public class BaseConsoleView {
             }
         }
         return new Matrix4f(data);
+
     }
 
     protected int readInt() {
