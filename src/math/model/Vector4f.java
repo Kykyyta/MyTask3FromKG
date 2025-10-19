@@ -31,6 +31,15 @@ public class Vector4f extends AbstractVector<Vector4f> {
 
     }
 
+    public float distance(Vector4f other) {
+        float dx = getX() - other.getX();
+        float dy = getY() - other.getY();
+        float dz = getZ() - other.getZ();
+        float dw = getW() - other.getW();
+
+        return (float) Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
+    }
+
     @Override
     public String toString() {
         return String.format("(%.4f, %.4f, %.4f, %.4f)", getX(), getY(), getZ(), getW());
