@@ -1,7 +1,6 @@
 package math.controller;
 
 import math.model.*;
-import math.tests.MathTests;
 
 public class MathController {
 
@@ -190,7 +189,7 @@ public class MathController {
     }
 
     public void runTests() {
-        MathTests tests = new MathTests();
-        tests.runAllTests();
+        System.out.println("JUnit tests should be run through JUnit test runner");
+        System.out.println("Use your IDE's test runner or mvn test to execute tests");
     }
 }
