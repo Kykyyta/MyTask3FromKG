@@ -8,10 +8,8 @@ public class MathLibraryApp {
         MathController controller = new MathController();
 
         if (args.length > 0 && "test".equals(args[0])) {
-            // Режим тестирования
             controller.runTests();
         } else {
-            // Интерактивный режим
             MathInteractiveView view = new MathInteractiveView(controller);
             view.start();
         }
