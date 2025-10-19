@@ -88,7 +88,7 @@ public class BaseConsoleView {
             try {
                 return scanner.nextInt();
             } catch (Exception e) {
-                showError("Invalid input. Please enter an integer: ");
+                showError("Invalid input. Please enter an integer");
                 scanner.next();
             }
         }
@@ -99,7 +99,7 @@ public class BaseConsoleView {
             try {
                 return scanner.nextFloat();
             } catch (Exception e) {
-                showError("Invalid input. Please enter a number: ");
+                showError("Invalid input. Please enter a number");
                 scanner.next();
             }
         }
