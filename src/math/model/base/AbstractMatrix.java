@@ -9,10 +9,16 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
     protected final int size;
 
     protected AbstractMatrix(float[][] data, int size) {
-
-        if (data.length != size || data[0].length != size) {
+        // Проверяем все строки на соответствие размеру
+        if (data.length != size) {
             throw new IllegalArgumentException("Matrix must be " + size + "x" + size);
         }
+        for (int i = 0; i < size; i++) {
+            if (data[i].length != size) {
+                throw new IllegalArgumentException("Matrix must be " + size + "x" + size);
+            }
+        }
+
         this.size = size;
         this.data = new float[size][size];
         for (int i = 0; i < size; i++) {
@@ -24,7 +30,6 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
 
     @Override
     public T add(T other) { // сложение
-
         float[][] result = new float[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -32,12 +37,10 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
             }
         }
         return createNew(result);
-
     }
 
     @Override
     public T subtract(T other) { // вычитание
-
         float[][] result = new float[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -45,12 +48,10 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
             }
         }
         return createNew(result);
-
     }
 
     @Override
     public T multiply(float scalar) { // скалярка
-
         float[][] result = new float[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -58,12 +59,10 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
             }
         }
         return createNew(result);
-
     }
 
     @Override
     public T multiply(T other) { // умножение матриц
-
         float[][] result = new float[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -77,7 +76,6 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
 
     @Override
     public T transpose() { // транспонирование
-
         float[][] result = new float[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -89,7 +87,6 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
 
     @Override
     public boolean equals(Object obj) { // сравнение
-
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 
@@ -109,14 +106,12 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T, V>, V extends A
 
     @Override
     public int hashCode() {
-
         int result = 1;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                result = 31 * result + Float.floatToIntBits(data[i][j]);
+                result = 31 * result + Float.hashCode(data[i][j]);
             }
         }
         return result;
-
     }
 }
