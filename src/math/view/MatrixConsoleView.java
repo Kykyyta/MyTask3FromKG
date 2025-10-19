@@ -127,7 +127,7 @@ public class MatrixConsoleView extends BaseConsoleView {
             showMessage("Inverse matrix:");
             showMessage(inverse.toString());
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -238,7 +238,7 @@ public class MatrixConsoleView extends BaseConsoleView {
             showMessage("Inverse matrix:");
             showMessage(inverse.toString());
         } catch (ArithmeticException e) {
-            showError("Error: " + e.getMessage());
+            showError(e);
         }
     }
 
@@ -251,4 +251,3 @@ public class MatrixConsoleView extends BaseConsoleView {
         showMessage("Result: " + result);
     }
 }
-
