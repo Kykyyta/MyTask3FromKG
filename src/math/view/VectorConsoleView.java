@@ -11,13 +11,13 @@ public class VectorConsoleView extends BaseConsoleView {
     }
 
     public void showVectorMenu() {
-
         while (true) {
             showSectionHeader("VECTOR OPERATIONS");
             showMessage("1. 2D Vector Operations");
             showMessage("2. 3D Vector Operations");
             showMessage("3. 4D Vector Operations");
-            showMessage("4. Back to Main Menu");
+            showMessage("4. 2D Point Operations"); // ★ НОВЫЙ ПУНКТ ★
+            showMessage("5. Back to Main Menu");
             showMessage("Choose option: ");
 
             int choice = readInt();
@@ -26,15 +26,14 @@ public class VectorConsoleView extends BaseConsoleView {
                 case 1 -> showVector2dMenu();
                 case 2 -> showVector3dMenu();
                 case 3 -> showVector4dMenu();
-                case 4 -> { return; }
+                case 4 -> showPoint2fMenu(); // ★ НОВЫЙ CASE ★
+                case 5 -> { return; }
                 default -> showError("Invalid option!");
             }
         }
-
     }
 
     private void showVector2dMenu() {
-
         while (true) {
             showSectionHeader("2D VECTOR OPERATIONS");
             showMessage("1. Add Vectors");
@@ -63,62 +62,46 @@ public class VectorConsoleView extends BaseConsoleView {
                 default -> showError("Invalid option!");
             }
         }
-
     }
 
     private void performVector2dAddition() {
-
         showSectionHeader("VECTOR ADDITION");
         Vector2f v1 = readVector2f("Enter first vector");
         Vector2f v2 = readVector2f("Enter second vector");
-
         Vector2f result = controller.addVectors(v1, v2);
         showMessage("Result: " + v1 + " + " + v2 + " = " + result);
-
     }
 
     private void performVector2dSubtraction() {
-
         showSectionHeader("VECTOR SUBTRACTION");
         Vector2f v1 = readVector2f("Enter first vector");
         Vector2f v2 = readVector2f("Enter second vector");
-
         Vector2f result = controller.subtractVectors(v1, v2);
         showMessage("Result: " + v1 + " - " + v2 + " = " + result);
-
     }
 
     private void performVector2dDotProduct() {
-
         showSectionHeader("DOT PRODUCT");
         Vector2f v1 = readVector2f("Enter first vector");
         Vector2f v2 = readVector2f("Enter second vector");
-
         float result = controller.dotProduct(v1, v2);
         showMessage("Result: " + v1 + " · " + v2 + " = " + result);
-
     }
 
     private void performVector2dScalarMultiplication() {
-
         showSectionHeader("SCALAR MULTIPLICATION");
         Vector2f v = readVector2f("Enter vector");
         showMessage("Enter scalar: ");
         float scalar = readFloat();
-
         Vector2f result = controller.multiplyVector(v, scalar);
         showMessage("Result: " + v + " * " + scalar + " = " + result);
-
     }
 
     private void performVector2dScalarDivision() {
-
         showSectionHeader("SCALAR DIVISION");
         Vector2f v = readVector2f("Enter vector");
         showMessage("Enter scalar: ");
-
         float scalar = readFloat();
-
         try {
             Vector2f result = controller.divideVector(v, scalar);
             showMessage("Result: " + v + " / " + scalar + " = " + result);
@@ -128,20 +111,15 @@ public class VectorConsoleView extends BaseConsoleView {
     }
 
     private void performVector2dLength() {
-
         showSectionHeader("VECTOR LENGTH");
         Vector2f v = readVector2f("Enter vector");
-
         float length = controller.vectorLength(v);
         showMessage("Length of " + v + " = " + length);
-
     }
 
     private void performVector2dNormalization() {
-
         showSectionHeader("VECTOR NORMALIZATION");
         Vector2f v = readVector2f("Enter vector");
-
         try {
             Vector2f normalized = controller.normalizeVector(v);
             showMessage("Normalized " + v + " = " + normalized);
@@ -149,22 +127,17 @@ public class VectorConsoleView extends BaseConsoleView {
         } catch (ArithmeticException e) {
             showError(e);
         }
-
     }
 
     private void performVector2dDistance() {
-
         showSectionHeader("DISTANCE BETWEEN VECTORS");
         Vector2f v1 = readVector2f("Enter first vector");
         Vector2f v2 = readVector2f("Enter second vector");
-
         float distance = controller.distance(v1, v2);
         showMessage("Distance between " + v1 + " and " + v2 + " = " + distance);
-
     }
 
     private void showVector3dMenu() {
-
         while (true) {
             showSectionHeader("3D VECTOR OPERATIONS");
             showMessage("1. Add Vectors");
@@ -198,92 +171,69 @@ public class VectorConsoleView extends BaseConsoleView {
     }
 
     private void performVector3dAddition() {
-
         showSectionHeader("VECTOR ADDITION");
         Vector3f v1 = readVector3f("Enter first vector");
         Vector3f v2 = readVector3f("Enter second vector");
-
         Vector3f result = controller.addVectors(v1, v2);
         showMessage("Result: " + v1 + " + " + v2 + " = " + result);
-
     }
 
     private void performVector3dSubtraction() {
-
         showSectionHeader("VECTOR SUBTRACTION");
         Vector3f v1 = readVector3f("Enter first vector");
         Vector3f v2 = readVector3f("Enter second vector");
-
         Vector3f result = controller.subtractVectors(v1, v2);
         showMessage("Result: " + v1 + " - " + v2 + " = " + result);
-
     }
 
     private void performVector3dDotProduct() {
-
         showSectionHeader("DOT PRODUCT");
         Vector3f v1 = readVector3f("Enter first vector");
         Vector3f v2 = readVector3f("Enter second vector");
-
         float result = controller.dotProduct(v1, v2);
         showMessage("Result: " + v1 + " · " + v2 + " = " + result);
-
     }
 
     private void performVector3dCrossProduct() {
-
         showSectionHeader("CROSS PRODUCT");
         Vector3f v1 = readVector3f("Enter first vector");
         Vector3f v2 = readVector3f("Enter second vector");
-
         Vector3f result = controller.crossProduct(v1, v2);
         showMessage("Result: " + v1 + " × " + v2 + " = " + result);
-
     }
 
     private void performVector3dScalarMultiplication() {
-
         showSectionHeader("SCALAR MULTIPLICATION");
         Vector3f v = readVector3f("Enter vector");
         showMessage("Enter scalar: ");
         float scalar = readFloat();
-
         Vector3f result = controller.multiplyVector(v, scalar);
         showMessage("Result: " + v + " * " + scalar + " = " + result);
-
     }
 
     private void performVector3dScalarDivision() {
-
         showSectionHeader("SCALAR DIVISION");
         Vector3f v = readVector3f("Enter vector");
         showMessage("Enter scalar: ");
         float scalar = readFloat();
-
         try {
             Vector3f result = controller.divideVector(v, scalar);
             showMessage("Result: " + v + " / " + scalar + " = " + result);
         } catch (ArithmeticException e) {
             showError(e);
         }
-
     }
 
     private void performVector3dLength() {
-
         showSectionHeader("VECTOR LENGTH");
         Vector3f v = readVector3f("Enter vector");
-
         float length = controller.vectorLength(v);
         showMessage("Length of " + v + " = " + length);
-
     }
 
     private void performVector3dNormalization() {
-
         showSectionHeader("VECTOR NORMALIZATION");
         Vector3f v = readVector3f("Enter vector");
-
         try {
             Vector3f normalized = controller.normalizeVector(v);
             showMessage("Normalized " + v + " = " + normalized);
@@ -294,18 +244,14 @@ public class VectorConsoleView extends BaseConsoleView {
     }
 
     private void performVector3dDistance() {
-
         showSectionHeader("DISTANCE BETWEEN VECTORS");
         Vector3f v1 = readVector3f("Enter first vector");
         Vector3f v2 = readVector3f("Enter second vector");
-
         float distance = controller.distance(v1, v2);
         showMessage("Distance between " + v1 + " and " + v2 + " = " + distance);
-
     }
 
     private void showVector4dMenu() {
-
         while (true) {
             showSectionHeader("4D VECTOR OPERATIONS");
             showMessage("1. Add Vectors");
@@ -316,8 +262,8 @@ public class VectorConsoleView extends BaseConsoleView {
             showMessage("6. Length");
             showMessage("7. Normalize");
             showMessage("8. Convert to/from 3D");
-            showMessage("9. Distance between vectors"); // ★ ДОБАВЛЕН НОВЫЙ ПУНКТ ★
-            showMessage("10. Back to Vector Menu");     // ★ ИЗМЕНЕН НОМЕР ★
+            showMessage("9. Distance between vectors");
+            showMessage("10. Back to Vector Menu");
             showMessage("Choose operation: ");
 
             int choice = readInt();
@@ -331,7 +277,7 @@ public class VectorConsoleView extends BaseConsoleView {
                 case 6 -> performVector4dLength();
                 case 7 -> performVector4dNormalization();
                 case 8 -> performVectorConversion();
-                case 9 -> performVector4dDistance();    // ★ ДОБАВЛЕН НОВЫЙ CASE ★
+                case 9 -> performVector4dDistance();
                 case 10 -> { return; }
                 default -> showError("Invalid option!");
             }
@@ -339,57 +285,43 @@ public class VectorConsoleView extends BaseConsoleView {
     }
 
     private void performVector4dAddition() {
-
         showSectionHeader("VECTOR ADDITION");
         Vector4f v1 = readVector4f("Enter first vector");
         Vector4f v2 = readVector4f("Enter second vector");
-
         Vector4f result = controller.addVectors(v1, v2);
         showMessage("Result: " + v1 + " + " + v2 + " = " + result);
-
     }
 
     private void performVector4dSubtraction() {
-
         showSectionHeader("VECTOR SUBTRACTION");
         Vector4f v1 = readVector4f("Enter first vector");
         Vector4f v2 = readVector4f("Enter second vector");
-
         Vector4f result = controller.subtractVectors(v1, v2);
         showMessage("Result: " + v1 + " - " + v2 + " = " + result);
-
     }
 
     private void performVector4dDotProduct() {
-
         showSectionHeader("DOT PRODUCT");
         Vector4f v1 = readVector4f("Enter first vector");
         Vector4f v2 = readVector4f("Enter second vector");
-
         float result = controller.dotProduct(v1, v2);
         showMessage("Result: " + v1 + " · " + v2 + " = " + result);
-
     }
 
     private void performVector4dScalarMultiplication() {
-
         showSectionHeader("SCALAR MULTIPLICATION");
         Vector4f v = readVector4f("Enter vector");
         showMessage("Enter scalar: ");
         float scalar = readFloat();
-
         Vector4f result = controller.multiplyVector(v, scalar);
         showMessage("Result: " + v + " * " + scalar + " = " + result);
-
     }
 
     private void performVector4dScalarDivision() {
-
         showSectionHeader("SCALAR DIVISION");
         Vector4f v = readVector4f("Enter vector");
         showMessage("Enter scalar: ");
         float scalar = readFloat();
-
         try {
             Vector4f result = controller.divideVector(v, scalar);
             showMessage("Result: " + v + " / " + scalar + " = " + result);
@@ -399,20 +331,15 @@ public class VectorConsoleView extends BaseConsoleView {
     }
 
     private void performVector4dLength() {
-
         showSectionHeader("VECTOR LENGTH");
         Vector4f v = readVector4f("Enter vector");
-
         float length = controller.vectorLength(v);
         showMessage("Length of " + v + " = " + length);
-
     }
 
     private void performVector4dNormalization() {
-
         showSectionHeader("VECTOR NORMALIZATION");
         Vector4f v = readVector4f("Enter vector");
-
         try {
             Vector4f normalized = controller.normalizeVector(v);
             showMessage("Normalized " + v + " = " + normalized);
@@ -420,29 +347,22 @@ public class VectorConsoleView extends BaseConsoleView {
         } catch (ArithmeticException e) {
             showError(e);
         }
-
     }
 
     private void performVector4dDistance() {
-
         showSectionHeader("DISTANCE BETWEEN 4D VECTORS");
         Vector4f v1 = readVector4f("Enter first vector");
         Vector4f v2 = readVector4f("Enter second vector");
-
         float distance = controller.distance(v1, v2);
         showMessage("Distance between " + v1 + " and " + v2 + " = " + distance);
-
     }
 
     private void performVectorConversion() {
-
         showSectionHeader("VECTOR CONVERSION");
         showMessage("1. 3D to 4D");
         showMessage("2. 4D to 3D");
         showMessage("Choose conversion: ");
-
         int choice = readInt();
-
         if (choice == 1) {
             Vector3f v3 = readVector3f("Enter 3D vector");
             Vector4f v4 = controller.vector3fTo4f(v3);
@@ -458,5 +378,89 @@ public class VectorConsoleView extends BaseConsoleView {
         } else {
             showError("Invalid choice!");
         }
+    }
+
+    // ★★★ НОВЫЕ МЕТОДЫ ДЛЯ РАБОТЫ С ТОЧКАМИ ★★★
+
+    private void showPoint2fMenu() {
+        while (true) {
+            showSectionHeader("2D POINT OPERATIONS");
+            showMessage("1. Add Points");
+            showMessage("2. Subtract Points");
+            showMessage("3. Distance between Points");
+            showMessage("4. Translate Point by Vector");
+            showMessage("5. Convert Point to Vector");
+            showMessage("6. Convert Vector to Point");
+            showMessage("7. Back to Vector Menu");
+            showMessage("Choose operation: ");
+
+            int choice = readInt();
+
+            switch (choice) {
+                case 1 -> performPoint2fAddition();
+                case 2 -> performPoint2fSubtraction();
+                case 3 -> performPoint2fDistance();
+                case 4 -> performPoint2fTranslation();
+                case 5 -> performPointToVectorConversion();
+                case 6 -> performVectorToPointConversion();
+                case 7 -> { return; }
+                default -> showError("Invalid option!");
+            }
+        }
+    }
+
+    private Point2f readPoint2f(String prompt) {
+        showMessage(prompt + ":");
+        showMessage("Enter x: ");
+        float x = readFloat();
+        showMessage("Enter y: ");
+        float y = readFloat();
+        return new Point2f(x, y);
+    }
+
+    private void performPoint2fAddition() {
+        showSectionHeader("POINT ADDITION");
+        Point2f p1 = readPoint2f("Enter first point");
+        Point2f p2 = readPoint2f("Enter second point");
+        Point2f result = controller.addPoints(p1, p2);
+        showMessage("Result: " + p1 + " + " + p2 + " = " + result);
+    }
+
+    private void performPoint2fSubtraction() {
+        showSectionHeader("POINT SUBTRACTION");
+        Point2f p1 = readPoint2f("Enter first point");
+        Point2f p2 = readPoint2f("Enter second point");
+        Point2f result = controller.subtractPoints(p1, p2);
+        showMessage("Result: " + p1 + " - " + p2 + " = " + result);
+    }
+
+    private void performPoint2fDistance() {
+        showSectionHeader("DISTANCE BETWEEN POINTS");
+        Point2f p1 = readPoint2f("Enter first point");
+        Point2f p2 = readPoint2f("Enter second point");
+        float distance = controller.distanceBetweenPoints(p1, p2);
+        showMessage("Distance between " + p1 + " and " + p2 + " = " + distance);
+    }
+
+    private void performPoint2fTranslation() {
+        showSectionHeader("POINT TRANSLATION");
+        Point2f p = readPoint2f("Enter point");
+        Vector2f v = readVector2f("Enter translation vector");
+        Point2f result = controller.translatePoint(p, v);
+        showMessage("Result: " + p + " + " + v + " = " + result);
+    }
+
+    private void performPointToVectorConversion() {
+        showSectionHeader("POINT TO VECTOR CONVERSION");
+        Point2f p = readPoint2f("Enter point");
+        Vector2f v = controller.pointToVector(p);
+        showMessage("Vector: " + v);
+    }
+
+    private void performVectorToPointConversion() {
+        showSectionHeader("VECTOR TO POINT CONVERSION");
+        Vector2f v = readVector2f("Enter vector");
+        Point2f p = controller.vectorToPoint(v);
+        showMessage("Point: " + p);
     }
 }
