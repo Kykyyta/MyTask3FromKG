@@ -188,6 +188,30 @@ public class MathController {
         return v.toVector3f();
     }
 
+    public Point2f addPoints(Point2f a, Point2f b) {
+        return a.add(b);
+    }
+
+    public Point2f subtractPoints(Point2f a, Point2f b) {
+        return a.subtract(b);
+    }
+
+    public float distanceBetweenPoints(Point2f a, Point2f b) {
+        return a.distance(b);
+    }
+
+    public Point2f translatePoint(Point2f point, Vector2f vector) {
+        return point.translate(vector);
+    }
+
+    public Vector2f pointToVector(Point2f point) {
+        return point.toVector2f();
+    }
+
+    public Point2f vectorToPoint(Vector2f vector) {
+        return Point2f.fromVector2f(vector);
+    }
+
     public void runTests() {
         System.out.println("JUnit tests should be run through JUnit test runner");
         System.out.println("Use your IDE's test runner or mvn test to execute tests");
